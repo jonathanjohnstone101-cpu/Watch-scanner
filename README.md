@@ -17,9 +17,13 @@ python3 scanner.py --dry-run      # print matches without sending
 python3 scanner.py                # scan + alert (run hourly)
 ```
 
+## Hourly runs on GitHub Actions
+
+`.github/workflows/scan.yml` runs the scanner every hour. It needs the repository secrets `EBAY_CLIENT_ID`, `EBAY_CLIENT_SECRET` and `TELEGRAM_BOT_TOKEN` (Settings → Secrets and variables → Actions). To run it straight away, open the Actions tab, pick **Watch scan** and press **Run workflow**.
+
 ## Notes
 
-- Only listings posted in the last `lookback_minutes` are alerted, so an hourly run doesn't repeat old ones.
+- Only listings posted in the last `lookback_minutes` are checked. The window is longer than an hour because GitHub can run scheduled jobs late. `seen.json` stops the same listing being alerted twice.
 - eBay results are Buy It Now / Best Offer only. Auction prices change, so they're excluded.
 - Vinted is off by default (`"sites": ["ebay"]` in `watches.json`) because Vinted blocks cloud servers. For Vinted, use a saved search with notifications in the Vinted app. It can be switched on (`"sites": ["ebay", "vinted"]`) when running from a home connection, but it relies on an unofficial endpoint.
 - Facebook Marketplace isn't included: it has no API and blocks bots. Use saved-search alerts in the Facebook app instead.

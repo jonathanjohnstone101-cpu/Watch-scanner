@@ -5,7 +5,7 @@
     "ebay"
   ],
   "telegram_chat_id": "5018164644",
-  "lookback_minutes": 75,
+  "lookback_minutes": 180,
   "global_exclude": [
     "replica",
     "homage",
