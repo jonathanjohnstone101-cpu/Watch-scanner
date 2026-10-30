@@ -1,5 +1,5 @@
 {
-  "_comment": "Edit this list. max_price = most you'd pay (GBP, incl. postage where known). resale_price = what you expect to sell it for, used to show estimated profit. These are placeholder examples - set your own numbers. Optional max_price_new_boxed = higher limit used only for brand new watches with box and papers.",
+  "_comment": "Edit this list. max_price = most you'd pay (GBP, incl. postage where known). resale_price = what you expect to sell it for, used to show estimated profit. These are placeholder examples - set your own numbers. Optional max_price_new_boxed = higher limit used only for brand new watches with box and papers. Optional min_price skips listings that are too cheap to be a whole working watch (usually parts).",
   "_sites_comment": "Sites to search: \"ebay\" and/or \"vinted\". Vinted blocks cloud servers, so only enable it when running from a home connection.",
   "sites": [
     "ebay"
@@ -122,6 +122,76 @@
         "26 mm",
         "ladies",
         "lady"
+      ]
+    },
+    {
+      "name": "Omega Geneve / Seamaster automatic (vintage)",
+      "query": "omega (geneve,genève,seamaster) automatic",
+      "max_price": 350,
+      "min_price": 150,
+      "must_include": [
+        "omega",
+        [
+          "geneve",
+          "genève",
+          "seamaster"
+        ],
+        "auto"
+      ],
+      "exclude": [
+        "ladies",
+        "lady",
+        "women",
+        "girls",
+        "plated",
+        "faulty",
+        "untested",
+        "not running",
+        "needs",
+        "swatch",
+        "dial only",
+        "hands",
+        "crown",
+        "crystal only",
+        "quartz",
+        "broken",
+        "project",
+        "restoration"
+      ]
+    },
+    {
+      "name": "Omega De Ville quartz (men's)",
+      "query": "omega (de ville,deville) quartz",
+      "max_price": 300,
+      "min_price": 150,
+      "must_include": [
+        "omega",
+        [
+          "de ville",
+          "deville"
+        ],
+        "quartz"
+      ],
+      "exclude": [
+        "ladies",
+        "lady",
+        "women",
+        "girls",
+        "plated",
+        "faulty",
+        "untested",
+        "not running",
+        "needs",
+        "swatch",
+        "dial only",
+        "hands",
+        "crown",
+        "crystal only",
+        "automatic",
+        "manual",
+        "broken",
+        "project",
+        "restoration"
       ]
     }
   ]

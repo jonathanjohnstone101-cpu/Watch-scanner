@@ -306,7 +306,9 @@ def main():
             for item in items:
                 if item["id"] in seen or not item["price"]:
                     continue
-                if item["price"] > price_cap(watch, item) or not title_ok(item["title"], watch, global_exclude):
+                if not watch.get("min_price", 0) <= item["price"] <= price_cap(watch, item):
+                    continue
+                if not title_ok(item["title"], watch, global_exclude):
                     continue
                 seen.add(item["id"])
                 found += 1
