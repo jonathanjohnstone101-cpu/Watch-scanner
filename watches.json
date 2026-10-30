@@ -1,48 +1,105 @@
 {
   "_comment": "Edit this list. max_price = most you'd pay (GBP, incl. postage where known). resale_price = what you expect to sell it for, used to show estimated profit. These are placeholder examples - set your own numbers.",
   "_sites_comment": "Sites to search: \"ebay\" and/or \"vinted\". Vinted blocks cloud servers, so only enable it when running from a home connection.",
-  "sites": ["ebay"],
+  "sites": [
+    "ebay"
+  ],
   "telegram_chat_id": "5018164644",
   "lookback_minutes": 75,
   "global_exclude": [
-    "replica", "homage", "style", "inspired", "copy", "fake",
-    "strap only", "box only", "boxes only", "empty box", "papers only",
-    "spares", "repair", "not working", "for parts", "parts only",
-    "dial only", "bezel insert", "movement only", "case only", "bracelet only",
-    "toy", "kids"
+    "replica",
+    "homage",
+    "style",
+    "inspired",
+    "copy",
+    "fake",
+    "strap only",
+    "box only",
+    "boxes only",
+    "empty box",
+    "papers only",
+    "spares",
+    "repair",
+    "not working",
+    "for parts",
+    "parts only",
+    "dial only",
+    "bezel insert",
+    "movement only",
+    "case only",
+    "bracelet only",
+    "toy",
+    "kids"
   ],
   "watches": [
     {
-      "name": "Seiko SKX007",
-      "query": "seiko skx007",
-      "max_price": 170,
-      "resale_price": 240,
-      "must_include": ["skx007"],
-      "exclude": ["mod", "nh35"]
+      "name": "Tissot PRX Blue (T137.410.11.041.00)",
+      "query": "tissot prx blue",
+      "max_price": 175,
+      "must_include": [
+        "prx",
+        "blue"
+      ],
+      "exclude": [
+        "powermatic",
+        "automatic",
+        "chronograph",
+        "35mm",
+        "35 mm",
+        "26mm",
+        "26 mm",
+        "ladies",
+        "lady",
+        "tiffany",
+        "turquoise",
+        "mint",
+        "ice blue",
+        "light blue"
+      ]
     },
     {
-      "name": "Seiko SPB143",
-      "query": "seiko spb143",
-      "max_price": 550,
-      "resale_price": 750,
-      "must_include": ["spb143"],
-      "exclude": []
+      "name": "Tissot PRX Green",
+      "query": "tissot prx green",
+      "max_price": 175,
+      "must_include": [
+        "prx",
+        "green"
+      ],
+      "exclude": [
+        "powermatic",
+        "automatic",
+        "chronograph",
+        "35mm",
+        "35 mm",
+        "26mm",
+        "26 mm",
+        "ladies",
+        "lady",
+        "tiffany",
+        "turquoise",
+        "mint",
+        "ice blue",
+        "light blue"
+      ]
     },
     {
-      "name": "Tudor Black Bay 58",
-      "query": "tudor black bay 58",
-      "max_price": 2000,
-      "resale_price": 2500,
-      "must_include": ["tudor"],
-      "exclude": []
-    },
-    {
-      "name": "Omega Seamaster 300M",
-      "query": "omega seamaster professional 300m",
-      "max_price": 1500,
-      "resale_price": 2000,
-      "must_include": ["omega", "seamaster"],
-      "exclude": []
+      "name": "Tissot PRX Tiffany (T137.410.11.091.01)",
+      "query": "tissot prx (tiffany,turquoise,mint)",
+      "max_price": 175,
+      "must_include": [
+        "prx"
+      ],
+      "exclude": [
+        "powermatic",
+        "automatic",
+        "chronograph",
+        "35mm",
+        "35 mm",
+        "26mm",
+        "26 mm",
+        "ladies",
+        "lady"
+      ]
     }
   ]
 }
