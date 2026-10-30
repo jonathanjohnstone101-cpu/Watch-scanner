@@ -100,6 +100,28 @@
         "ladies",
         "lady"
       ]
+    },
+    {
+      "name": "Tissot PRX Powermatic 80 40mm",
+      "query": "tissot prx (powermatic,automatic)",
+      "max_price": 330,
+      "must_include": [
+        "prx",
+        [
+          "powermatic",
+          "automatic"
+        ]
+      ],
+      "exclude": [
+        "quartz",
+        "chronograph",
+        "35mm",
+        "35 mm",
+        "26mm",
+        "26 mm",
+        "ladies",
+        "lady"
+      ]
     }
   ]
 }
