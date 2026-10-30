@@ -51,8 +51,11 @@ def http_json(url, *, headers=None, data=None, opener=None, timeout=20):
 
 def title_ok(title, watch, global_exclude):
     t = title.lower()
-    if any(word.lower() not in t for word in watch.get("must_include", [])):
-        return False
+    # A list inside must_include means "any one of these words".
+    for word in watch.get("must_include", []):
+        options = word if isinstance(word, list) else [word]
+        if not any(w.lower() in t for w in options):
+            return False
     banned = global_exclude + watch.get("exclude", [])
     return not any(word.lower() in t for word in banned)
 
