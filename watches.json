@@ -1,5 +1,5 @@
 {
-  "_comment": "Edit this list. max_price = most you'd pay (GBP, incl. postage where known). resale_price = what you expect to sell it for, used to show estimated profit. These are placeholder examples - set your own numbers.",
+  "_comment": "Edit this list. max_price = most you'd pay (GBP, incl. postage where known). resale_price = what you expect to sell it for, used to show estimated profit. These are placeholder examples - set your own numbers. Optional max_price_new_boxed = higher limit used only for brand new watches with box and papers.",
   "_sites_comment": "Sites to search: \"ebay\" and/or \"vinted\". Vinted blocks cloud servers, so only enable it when running from a home connection.",
   "sites": [
     "ebay"
@@ -105,6 +105,7 @@
       "name": "Tissot PRX Powermatic 80 40mm",
       "query": "tissot prx (powermatic,automatic)",
       "max_price": 330,
+      "max_price_new_boxed": 350,
       "must_include": [
         "prx",
         [
