@@ -60,6 +60,17 @@ def title_ok(title, watch, global_exclude):
     return not any(word.lower() in t for word in banned)
 
 
+def search_cap(watch):
+    return max(watch["max_price"], watch.get("max_price_new_boxed", 0))
+
+
+def price_cap(watch, item):
+    # Optional higher limit for brand new watches sold with box and papers.
+    if "max_price_new_boxed" in watch and item["condition"].lower().startswith("new with box"):
+        return watch["max_price_new_boxed"]
+    return watch["max_price"]
+
+
 # ---------------------------------------------------------------- eBay
 
 class Ebay:
@@ -96,7 +107,7 @@ class Ebay:
         if not self.token:
             self._get_token()
         filters = [
-            f"price:[..{watch['max_price']}]",
+            f"price:[..{search_cap(watch)}]",
             "priceCurrency:GBP",
             "buyingOptions:{FIXED_PRICE|BEST_OFFER}",
             "itemLocationCountry:GB",
@@ -160,7 +171,7 @@ class Vinted:
             self._init_session()
         params = urllib.parse.urlencode({
             "search_text": watch["query"],
-            "price_to": watch["max_price"],
+            "price_to": search_cap(watch),
             "currency": "GBP",
             "order": "newest_first",
             "per_page": "96",
@@ -222,7 +233,7 @@ def format_alert(watch, item):
     lines = [
         f"⌚ <b>{html.escape(watch['name'])}</b> on {item['site']}",
         html.escape(item["title"]),
-        f"💷 £{item['price']:.2f} (≈ £{item['total']:.2f} incl. fees/postage) · max £{watch['max_price']}",
+        f"💷 £{item['price']:.2f} (≈ £{item['total']:.2f} incl. fees/postage) · max £{price_cap(watch, item)}",
     ]
     if watch.get("resale_price"):
         margin = watch["resale_price"] - item["total"]
@@ -295,7 +306,7 @@ def main():
             for item in items:
                 if item["id"] in seen or not item["price"]:
                     continue
-                if item["price"] > watch["max_price"] or not title_ok(item["title"], watch, global_exclude):
+                if item["price"] > price_cap(watch, item) or not title_ok(item["title"], watch, global_exclude):
                     continue
                 seen.add(item["id"])
                 found += 1
