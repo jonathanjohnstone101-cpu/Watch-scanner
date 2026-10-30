@@ -193,6 +193,96 @@
         "project",
         "restoration"
       ]
+    },
+    {
+      "name": "Seiko Prospex Speedtimer Go Large SBDL095",
+      "query": "seiko (sbdl095,speedtimer,go large)",
+      "max_price": 285,
+      "min_price": 150,
+      "resale_price": 400,
+      "must_include": [
+        "seiko",
+        [
+          "sbdl095",
+          "go large"
+        ]
+      ],
+      "exclude": [
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "modded",
+        "custom"
+      ]
+    },
+    {
+      "name": "Seiko 5 Sports GMT SSK003K1",
+      "query": "seiko 5 (ssk003,blueberry) gmt",
+      "max_price": 265,
+      "min_price": 130,
+      "resale_price": 320,
+      "must_include": [
+        "seiko",
+        [
+          "ssk003",
+          "blueberry gmt"
+        ]
+      ],
+      "exclude": [
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "modded",
+        "custom"
+      ]
+    },
+    {
+      "name": "Citizen Tsuyosa 37mm NJ0200-50X",
+      "query": "citizen tsuyosa nj0200",
+      "max_price": 95,
+      "min_price": 40,
+      "resale_price": 120,
+      "must_include": [
+        "nj0200",
+        "50x"
+      ],
+      "exclude": [
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "modded",
+        "custom"
+      ]
+    },
+    {
+      "name": "Citizen Tsuyosa 40mm NJ0152-51X",
+      "query": "citizen tsuyosa nj0152",
+      "max_price": 120,
+      "min_price": 50,
+      "resale_price": 170,
+      "must_include": [
+        "nj0152",
+        "51x"
+      ],
+      "exclude": [
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "modded",
+        "custom"
+      ]
     }
   ]
 }
