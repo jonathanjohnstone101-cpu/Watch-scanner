@@ -21,6 +21,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -72,12 +73,20 @@ class Ebay:
             "grant_type": "client_credentials",
             "scope": "https://api.ebay.com/oauth/api_scope",
         }).encode()
-        resp = http_json(
-            "https://api.ebay.com/identity/v1/oauth2/token",
-            headers={"Authorization": f"Basic {creds}",
-                     "Content-Type": "application/x-www-form-urlencoded"},
-            data=body,
-        )
+        # eBay's token endpoint occasionally returns a spurious 401, so retry.
+        for attempt in range(3):
+            try:
+                resp = http_json(
+                    "https://api.ebay.com/identity/v1/oauth2/token",
+                    headers={"Authorization": f"Basic {creds}",
+                             "Content-Type": "application/x-www-form-urlencoded"},
+                    data=body,
+                )
+                break
+            except urllib.error.HTTPError:
+                if attempt == 2:
+                    raise
+                time.sleep(3)
         self.token = resp["access_token"]
 
     def search(self, watch, since):
