@@ -6,6 +6,10 @@
   ],
   "telegram_chat_id": "5018164644",
   "lookback_minutes": 180,
+  "_blocked_comment": "eBay/Vinted usernames you never want alerts from, e.g. sellers with fake-watch feedback.",
+  "blocked_sellers": [
+    "rishep_500"
+  ],
   "global_exclude": [
     "replica",
     "homage",

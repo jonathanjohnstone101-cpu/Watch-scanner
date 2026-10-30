@@ -145,6 +145,7 @@ class Ebay:
                 "condition": item.get("condition", ""),
                 "url": item.get("itemWebUrl", ""),
                 "image": item.get("image", {}).get("imageUrl", ""),
+                "seller": item.get("seller", {}).get("username", ""),
             }
 
 
@@ -197,6 +198,7 @@ class Vinted:
                 "condition": item.get("status", ""),
                 "url": item.get("url") or f"{self.BASE}/items/{item['id']}",
                 "image": (item.get("photo") or {}).get("url", ""),
+                "seller": (item.get("user") or {}).get("login", ""),
             }
 
 
@@ -274,6 +276,7 @@ def main():
     config = json.loads(CONFIG_PATH.read_text())
     since = datetime.now(timezone.utc) - timedelta(minutes=config.get("lookback_minutes", 75))
     global_exclude = config.get("global_exclude", [])
+    blocked_sellers = {name.lower() for name in config.get("blocked_sellers", [])}
 
     enabled = config.get("sites", ["ebay"])
     sources = []
@@ -304,7 +307,7 @@ def main():
                 log(f"{name} search failed for {watch['name']}: {exc}")
                 continue
             for item in items:
-                if item["id"] in seen or not item["price"]:
+                if item["id"] in seen or not item["price"] or item["seller"].lower() in blocked_sellers:
                     continue
                 if not watch.get("min_price", 0) <= item["price"] <= price_cap(watch, item):
                     continue
