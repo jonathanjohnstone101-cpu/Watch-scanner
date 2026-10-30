@@ -103,6 +103,9 @@ class Ebay:
                      "X-EBAY-C-MARKETPLACE-ID": "EBAY_GB"},
         )
         for item in resp.get("itemSummaries", []):
+            # Multi-variation listings can come back without a single price.
+            if "value" not in item.get("price", {}):
+                continue
             price = float(item["price"]["value"])
             shipping = 0.0
             for opt in item.get("shippingOptions", []):
