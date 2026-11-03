@@ -18,6 +18,7 @@ import base64
 import html
 import http.cookiejar
 import json
+import re
 import os
 import sys
 import time
@@ -57,7 +58,11 @@ def title_ok(title, watch, global_exclude):
         if not any(w.lower() in t for w in options):
             return False
     banned = global_exclude + watch.get("exclude", [])
-    return not any(word.lower() in t for word in banned)
+    if any(word.lower() in t for word in banned):
+        return False
+    # exclude_words only match whole words, so "mod" doesn't block "model".
+    words = set(re.findall(r"[a-z0-9]+", t))
+    return not any(word.lower() in words for word in watch.get("exclude_words", []))
 
 
 def search_cap(watch):
