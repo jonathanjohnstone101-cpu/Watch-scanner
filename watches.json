@@ -494,7 +494,7 @@
       "query": "orient (kamasu,mako iii,mako 3,mako 111)",
       "max_price": 150,
       "min_price": 90,
-      "resale_price": 200,
+      "resale_price": 190,
       "must_include": [
         "orient",
         [
