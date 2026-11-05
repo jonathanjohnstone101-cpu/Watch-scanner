@@ -745,6 +745,528 @@
         "project",
         "upgraded"
       ]
+    },
+    {
+      "name": "TAG Heuer Formula 1 quartz",
+      "query": "tag heuer formula 1",
+      "max_price": 230,
+      "min_price": 120,
+      "resale_price": 300,
+      "must_include": [
+        "tag",
+        [
+          "formula 1",
+          "formula one",
+          "formula-1"
+        ]
+      ],
+      "exclude": [
+        "see description",
+        "watch bezel",
+        "dial only",
+        "automatic",
+        "calibre",
+        "senna",
+        "gulf",
+        "aston",
+        "red bull",
+        "32mm",
+        "35mm",
+        "kids",
+        "plated",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "TAG Heuer 2000 / Professional 200m (90s)",
+      "query": "tag heuer (2000,professional) 200m",
+      "max_price": 250,
+      "min_price": 120,
+      "resale_price": 330,
+      "must_include": [
+        "tag",
+        [
+          "2000",
+          "professional"
+        ]
+      ],
+      "exclude": [
+        "see description",
+        "dial excellent",
+        "dial good",
+        "watch bezel",
+        "aquaracer",
+        "formula",
+        "link",
+        "kirium",
+        "4000",
+        "6000",
+        "1500",
+        "carrera",
+        "monaco",
+        "automatic",
+        "chronograph",
+        "mid size",
+        "midsize",
+        "plated",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Hamilton Khaki Field",
+      "query": "hamilton khaki field",
+      "max_price": 290,
+      "min_price": 150,
+      "resale_price": 400,
+      "must_include": [
+        "hamilton",
+        "khaki"
+      ],
+      "exclude": [
+        "navy",
+        "aviation",
+        "pilot",
+        "scuba",
+        "frogman",
+        "x-wind",
+        "belowzero",
+        "murph",
+        "titanium",
+        "chronograph",
+        "33mm",
+        "plated",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Rado DiaStar (men's)",
+      "query": "rado diastar",
+      "max_price": 200,
+      "min_price": 100,
+      "resale_price": 280,
+      "must_include": [
+        "rado",
+        [
+          "diastar",
+          "dia star"
+        ]
+      ],
+      "exclude": [
+        "dial only",
+        "see description",
+        "case new",
+        "case back",
+        "caseback only",
+        "crown only",
+        "crystal only",
+        "for rado",
+        "strap",
+        "band",
+        "plated",
+        "gold tone",
+        "gold-tone",
+        "gold filled",
+        "rolled gold",
+        "mini",
+        "glass only",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Certina DS Action diver",
+      "query": "certina ds action",
+      "max_price": 240,
+      "min_price": 120,
+      "resale_price": 320,
+      "must_include": [
+        "certina",
+        [
+          "ds action",
+          "ds-action"
+        ]
+      ],
+      "exclude": [
+        "case back",
+        "34mm",
+        "35mm",
+        "plated",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Certina DS PH200M",
+      "query": "certina (ph200m,ph200)",
+      "max_price": 300,
+      "min_price": 150,
+      "resale_price": 480,
+      "must_include": [
+        "certina",
+        "ph200"
+      ],
+      "exclude": [
+        "plated",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Longines vintage manual wind (men's)",
+      "query": "vintage longines manual wind",
+      "max_price": 220,
+      "min_price": 100,
+      "resale_price": 330,
+      "must_include": [
+        "longines",
+        [
+          "manual",
+          "hand wind",
+          "hand-wind",
+          "handwind",
+          "hand wound",
+          "hand-wound"
+        ]
+      ],
+      "exclude": [
+        "dial only",
+        "see description",
+        "case new",
+        "case back",
+        "caseback only",
+        "crown only",
+        "crystal only",
+        "for rado",
+        "strap",
+        "band",
+        "plated",
+        "gold tone",
+        "gold-tone",
+        "gold filled",
+        "rolled gold",
+        "quartz",
+        "automatic",
+        "record",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Longines Conquest quartz (men's)",
+      "query": "longines conquest quartz",
+      "max_price": 220,
+      "min_price": 100,
+      "resale_price": 300,
+      "must_include": [
+        "longines",
+        "conquest",
+        "quartz"
+      ],
+      "exclude": [
+        "vhp",
+        "29mm",
+        "34mm",
+        "plated",
+        "automatic",
+        "chronograph",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Seiko Turtle SRP777 / SRPE93",
+      "query": "seiko (srp777,srpe93,turtle)",
+      "max_price": 230,
+      "min_price": 130,
+      "resale_price": 300,
+      "must_include": [
+        "seiko",
+        [
+          "srp777",
+          "srpe93"
+        ]
+      ],
+      "exclude": [
+        "modded",
+        "modified",
+        "modification",
+        "custom",
+        "aftermarket",
+        "after market",
+        "upgrade",
+        "swapped",
+        "replaced",
+        "new dial",
+        "new bezel",
+        "new hands",
+        "refinished",
+        "redial",
+        "franken",
+        "sterile",
+        "nh35",
+        "nh36",
+        "sapphire",
+        "ceramic",
+        "dlc",
+        "pvd",
+        "coated",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Seiko Presage Cocktail Time SRPB41 / SRPB43",
+      "query": "seiko presage (srpb41,srpb43,cocktail)",
+      "max_price": 220,
+      "min_price": 130,
+      "resale_price": 290,
+      "must_include": [
+        "seiko",
+        [
+          "srpb41",
+          "srpb43"
+        ]
+      ],
+      "exclude": [
+        "modded",
+        "modified",
+        "modification",
+        "custom",
+        "aftermarket",
+        "after market",
+        "upgrade",
+        "swapped",
+        "replaced",
+        "new dial",
+        "new bezel",
+        "new hands",
+        "refinished",
+        "redial",
+        "franken",
+        "sterile",
+        "nh35",
+        "nh36",
+        "sapphire",
+        "ceramic",
+        "dlc",
+        "pvd",
+        "coated",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Casio G-Shock GMW-B5000D full metal (steel)",
+      "query": "casio g-shock (gmw-b5000d,gmwb5000d)",
+      "max_price": 230,
+      "min_price": 150,
+      "resale_price": 300,
+      "must_include": [
+        [
+          "gmw-b5000d",
+          "gmwb5000d"
+        ]
+      ],
+      "exclude": [
+        "custom",
+        "modded",
+        "bezel and strap",
+        "band only",
+        "kit",
+        "screen",
+        "ladies",
+        "lady",
+        "women",
+        "womens",
+        "girls",
+        "faulty",
+        "untested",
+        "broken",
+        "needs",
+        "not running",
+        "not working"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
     }
   ]
 }
