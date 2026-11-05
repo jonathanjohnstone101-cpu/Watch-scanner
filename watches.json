@@ -348,26 +348,24 @@
       ]
     },
     {
-      "name": "Orient Kamasu Red RA-AA0003R",
-      "query": "orient (kamasu,aa0003)",
+      "name": "Orient Kamasu / Mako III (all colours, RA-AA000x)",
+      "query": "orient (kamasu,mako iii,mako 3,mako 111)",
       "max_price": 150,
       "min_price": 90,
       "resale_price": 200,
       "must_include": [
         "orient",
         [
-          "aa0003",
-          "red"
+          "kamasu",
+          "mako iii",
+          "mako 3",
+          "mako 111",
+          "aa000"
         ]
       ],
       "exclude": [
-        "green",
-        "blue",
-        "aa0004",
-        "aa0005",
-        "aa0006",
-        "aa0007",
-        "aa0008",
+        "quartz",
+        "solar",
         "modded",
         "modified",
         "modification",
