@@ -65,6 +65,51 @@ def title_ok(title, watch, global_exclude):
     return not any(word.lower() in words for word in watch.get("exclude_words", []))
 
 
+# Phrases in a listing's description that mean it's a part, not a whole working watch.
+# Titles often look normal ("Omega Cosmic 2000 Brown Dial") and only the description says so.
+PARTS_PATTERNS = [
+    r"\bdial only\b", r"\bonly the dial\b", r"\bthis is (?:an? |the )?(?:\w+ ){0,4}dial\b",
+    r"\bfits (?:an? |the )?(?:\w+ ){0,2}(?:movement|calibre|caliber|cal\b)",
+    r"\b(?:come|came|comes|taken|removed) (?:off|from) (?:an? |the )?(?:\w+ ){0,2}(?:watch|movement)\b",
+    r"\bfrom a (?:working|functioning|running) watch\b",
+    r"\b(?:case|movement|bracelet|strap|crown|bezel|crystal|caseback|case back) only\b",
+    r"\bno movement\b", r"\bwithout (?:the |a )?movement\b",
+    r"\bfor parts\b", r"\bparts only\b", r"\bspares (?:or|and|/) ?repairs?\b", r"\bspares/repairs?\b",
+    r"\bnot (?:running|working)\b", r"\bdoes(?: not|n'?t) (?:run|work)\b",
+]
+LADIES_PATTERNS = [r"\blady'?s\b", r"\bladies'? (?:\w+ ){0,3}(?:watch|wristwatch)\b",
+                   r"\bwomen'?s (?:\w+ ){0,3}(?:watch|wristwatch)\b", r"\bwomens (?:\w+ ){0,3}(?:watch|wristwatch)\b"]
+PLATED_PATTERNS = [r"\bgold[- ]plated\b", r"\bplated case\b", r"\bgold[- ]filled\b", r"\brolled gold\b"]
+
+
+def details_problem(watch, details, global_exclude):
+    """Reason to skip a listing based on its full description and item specifics, or None."""
+    desc = details["description"]
+    aspects = details["aspects"]
+    banned = [w.lower() for w in global_exclude + watch.get("exclude", [])]
+    for pat in PARTS_PATTERNS:
+        m = re.search(pat, desc)
+        if m:
+            return f"description says '{m.group(0)}'"
+    if "ladies" in banned or "lady" in banned:
+        dept = aspects.get("Department", "").lower()
+        if "women" in dept and "men" not in dept.replace("women", ""):
+            return "listed under Department: Women"
+        for pat in LADIES_PATTERNS:
+            m = re.search(pat, desc)
+            if m:
+                return f"description says '{m.group(0)}'"
+    if "plated" in banned:
+        material = aspects.get("Case Material", "").lower()
+        if "plated" in material or "gold filled" in material:
+            return f"case material is {aspects['Case Material']}"
+        for pat in PLATED_PATTERNS:
+            m = re.search(pat, desc)
+            if m:
+                return f"description says '{m.group(0)}'"
+    return None
+
+
 def search_cap(watch):
     return max(watch["max_price"], watch.get("max_price_new_boxed", 0))
 
@@ -152,6 +197,18 @@ class Ebay:
                 "image": item.get("image", {}).get("imageUrl", ""),
                 "seller": item.get("seller", {}).get("username", ""),
             }
+
+    def details(self, item):
+        """Full listing: description text plus item specifics (Department, Case Material, ...)."""
+        item_id = urllib.parse.quote(item["id"].split(":", 1)[1], safe="")
+        resp = http_json(
+            f"https://api.ebay.com/buy/browse/v1/item/{item_id}",
+            headers={"Authorization": f"Bearer {self.token}",
+                     "X-EBAY-C-MARKETPLACE-ID": "EBAY_GB"},
+        )
+        text = html.unescape(re.sub(r"<[^>]+>", " ", resp.get("description") or resp.get("shortDescription") or ""))
+        aspects = {a.get("name", ""): a.get("value", "") for a in resp.get("localizedAspects", [])}
+        return {"description": re.sub(r"\s+", " ", text).lower(), "aspects": aspects}
 
 
 # ---------------------------------------------------------------- Vinted
@@ -318,6 +375,17 @@ def main():
                     continue
                 if not title_ok(item["title"], watch, global_exclude):
                     continue
+                # Read the full listing to catch parts, ladies' and plated watches the title hides.
+                if hasattr(source, "details"):
+                    try:
+                        problem = details_problem(watch, source.details(item), global_exclude)
+                    except Exception as exc:  # if eBay won't give details, alert anyway
+                        log(f"Couldn't read details for {item['url']}: {exc}")
+                        problem = None
+                    if problem:
+                        seen.add(item["id"])  # don't re-check it every run
+                        log(f"Skipped ({problem}): {item['title']}")
+                        continue
                 seen.add(item["id"])
                 found += 1
                 msg = format_alert(watch, item)
