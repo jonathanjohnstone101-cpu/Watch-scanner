@@ -291,6 +291,313 @@
         "modded",
         "custom"
       ]
+    },
+    {
+      "name": "Citizen Promaster Diver Fugu Blue NY0040-17L",
+      "query": "citizen (ny0040,fugu) blue",
+      "max_price": 100,
+      "min_price": 60,
+      "resale_price": 130,
+      "must_include": [
+        "citizen",
+        "ny0040",
+        [
+          "17l",
+          "blue"
+        ]
+      ],
+      "exclude": [
+        "modded",
+        "modified",
+        "modification",
+        "custom",
+        "aftermarket",
+        "after market",
+        "upgrade",
+        "swapped",
+        "replaced",
+        "new dial",
+        "new bezel",
+        "new hands",
+        "refinished",
+        "redial",
+        "franken",
+        "sterile",
+        "nh35",
+        "nh36",
+        "sapphire",
+        "ceramic",
+        "dlc",
+        "pvd",
+        "coated",
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "needs"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Orient Kamasu Red RA-AA0003R",
+      "query": "orient (kamasu,aa0003)",
+      "max_price": 150,
+      "min_price": 90,
+      "resale_price": 200,
+      "must_include": [
+        "orient",
+        [
+          "aa0003",
+          "red"
+        ]
+      ],
+      "exclude": [
+        "modded",
+        "modified",
+        "modification",
+        "custom",
+        "aftermarket",
+        "after market",
+        "upgrade",
+        "swapped",
+        "replaced",
+        "new dial",
+        "new bezel",
+        "new hands",
+        "refinished",
+        "redial",
+        "franken",
+        "sterile",
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "needs"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Seiko 5 Sports SRPD55 / SRPD51 / SRPD53",
+      "query": "seiko 5 (srpd55,srpd51,srpd53)",
+      "max_price": 115,
+      "min_price": 70,
+      "resale_price": 160,
+      "must_include": [
+        "seiko",
+        [
+          "srpd55",
+          "srpd51",
+          "srpd53"
+        ]
+      ],
+      "exclude": [
+        "modded",
+        "modified",
+        "modification",
+        "custom",
+        "aftermarket",
+        "after market",
+        "upgrade",
+        "swapped",
+        "replaced",
+        "new dial",
+        "new bezel",
+        "new hands",
+        "refinished",
+        "redial",
+        "franken",
+        "sterile",
+        "nh35",
+        "nh36",
+        "sapphire",
+        "ceramic",
+        "dlc",
+        "pvd",
+        "coated",
+        "skx",
+        "yobokies",
+        "namoki",
+        "dagaz",
+        "crystaltimes",
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "needs"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Casio G-Shock GW-M5610U",
+      "query": "casio g-shock (gw-m5610,gwm5610)",
+      "max_price": 60,
+      "min_price": 30,
+      "resale_price": 95,
+      "must_include": [
+        [
+          "gw-m5610",
+          "gwm5610"
+        ]
+      ],
+      "exclude": [
+        "custom",
+        "modded",
+        "metal bezel",
+        "steel bezel",
+        "bezel and strap",
+        "band only",
+        "screen",
+        "kit",
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "needs"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Seiko 5 SNK809 / SNK803",
+      "query": "seiko (snk809,snk803)",
+      "max_price": 55,
+      "min_price": 25,
+      "resale_price": 95,
+      "must_include": [
+        "seiko",
+        [
+          "snk809",
+          "snk803"
+        ]
+      ],
+      "exclude": [
+        "modded",
+        "modified",
+        "modification",
+        "custom",
+        "aftermarket",
+        "after market",
+        "upgrade",
+        "swapped",
+        "replaced",
+        "new dial",
+        "new bezel",
+        "new hands",
+        "refinished",
+        "redial",
+        "franken",
+        "sterile",
+        "nh35",
+        "nh36",
+        "sapphire",
+        "pvd",
+        "coated",
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "needs"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
+    },
+    {
+      "name": "Orient Ray II / Mako II",
+      "query": "orient (ray ii,mako ii,ray 2,mako 2,faa02)",
+      "max_price": 80,
+      "min_price": 40,
+      "resale_price": 125,
+      "must_include": [
+        "orient",
+        [
+          "ray ii",
+          "mako ii",
+          "ray 2",
+          "mako 2",
+          "faa02"
+        ]
+      ],
+      "exclude": [
+        "iii",
+        "ray 3",
+        "mako 3",
+        "raven",
+        "kamasu",
+        "modded",
+        "modified",
+        "modification",
+        "custom",
+        "aftermarket",
+        "after market",
+        "upgrade",
+        "swapped",
+        "replaced",
+        "new dial",
+        "new bezel",
+        "new hands",
+        "refinished",
+        "redial",
+        "franken",
+        "sterile",
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "needs"
+      ],
+      "exclude_words": [
+        "mod",
+        "mods",
+        "build",
+        "built",
+        "project",
+        "upgraded"
+      ]
     }
   ]
 }
