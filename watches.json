@@ -361,6 +361,13 @@
         ]
       ],
       "exclude": [
+        "green",
+        "blue",
+        "aa0004",
+        "aa0005",
+        "aa0006",
+        "aa0007",
+        "aa0008",
         "modded",
         "modified",
         "modification",
