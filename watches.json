@@ -293,6 +293,25 @@
       ]
     },
     {
+      "name": "Citizen Tsuyosa (any model)",
+      "query": "citizen tsuyosa",
+      "max_price": 130,
+      "min_price": 50,
+      "must_include": [
+        "tsuyosa"
+      ],
+      "exclude": [
+        "ladies",
+        "lady",
+        "women",
+        "faulty",
+        "untested",
+        "broken",
+        "modded",
+        "custom"
+      ]
+    },
+    {
       "name": "Seiko SKX007 diver",
       "query": "seiko (skx007,skx 007)",
       "max_price": 185,
