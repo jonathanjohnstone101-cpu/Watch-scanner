@@ -32,7 +32,7 @@ python3 scanner.py                # scan + alert (run hourly)
 
 # Gold weekly outlook
 
-`gold_outlook.py` sends a gold forecast for the coming week to the same Telegram chat every Sunday. It gives a verdict (**bullish**, **bearish** or **consolidation**), a score from −100 to +100 and a confidence level. The score is built from three parts:
+`gold_outlook.py` sends a gold forecast for the coming week to its own Telegram bot every Sunday, kept separate from the watch alerts. It gives a verdict (**bullish**, **bearish** or **consolidation**), a score from −100 to +100 and a confidence level. The score is built from three parts:
 
 | Part | Weight | What it looks at |
 |---|---|---|
@@ -44,12 +44,20 @@ A weak or mixed score, or a squeezed, trendless market, comes out as **consolida
 
 **News scoring:** with no key, a keyword model scores the headlines (for example "rate cut", "dollar slides" and "central bank buys gold" count as bullish; "no rate cut", "yields climb" and "ceasefire" count as bearish). It's rough. For a much better read, add an `ANTHROPIC_API_KEY` repository secret (from https://console.anthropic.com). Claude then reads every headline and writes a short summary, the bullish and bearish drivers, and what to watch next week. It's one request a week and costs pennies.
 
+**Setting up the gold bot:**
+
+1. In Telegram, message `@BotFather`, send `/newbot`, pick a name (e.g. "Gold Outlook") and copy the token.
+2. Open your new bot and press **Start** (a bot can't message you until you do).
+3. Add the token as a repository secret called `GOLD_TELEGRAM_BOT_TOKEN` (Settings → Secrets and variables → Actions).
+4. The chat id is in `gold_config.json`. It's your own Telegram user id, so it's the same as for the watch bot. To send it somewhere else, such as a group, change it there or set a `GOLD_TELEGRAM_CHAT_ID` secret.
+
 ```
+python3 gold_outlook.py --test-alert  # check the gold bot works
 python3 gold_outlook.py --dry-run   # print the report without sending
 python3 gold_outlook.py --no-ai     # force the keyword news model
 python3 gold_outlook.py             # build and send to Telegram
 ```
 
-`.github/workflows/gold.yml` runs it on Sundays at 17:23 UTC. It uses the `TELEGRAM_BOT_TOKEN` secret you already have, plus `ANTHROPIC_API_KEY` if you add it. To try it now, open Actions → **Gold outlook** → **Run workflow**. Feeds, search topics and weights are in `gold_config.json`.
+`.github/workflows/gold.yml` runs it on Sundays at 17:23 UTC. It needs the `GOLD_TELEGRAM_BOT_TOKEN` secret, plus `ANTHROPIC_API_KEY` if you add it. To try it now, open Actions → **Gold outlook** → **Run workflow**. Feeds, search topics and weights are in `gold_config.json`.
 
 Prices are Friday's close (markets are shut on Sunday). This isn't financial advice: the scores are rules-based and can be wrong, especially around big data releases.

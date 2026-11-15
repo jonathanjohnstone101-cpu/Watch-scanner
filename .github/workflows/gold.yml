@@ -21,7 +21,7 @@ jobs:
 
       - name: Build and send the outlook
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          GOLD_TELEGRAM_BOT_TOKEN: ${{ secrets.GOLD_TELEGRAM_BOT_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           python3 gold_outlook.py

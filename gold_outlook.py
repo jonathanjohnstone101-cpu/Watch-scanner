@@ -581,15 +581,25 @@ def build_report(cfg, use_ai=True):
     return "\n".join(L)
 
 
-def send_telegram(text):
-    from scanner import send_telegram as send  # reuse the watch scanner's bot settings
+def telegram_settings(cfg):
+    """The gold outlook has its own bot, separate from the watch scanner's."""
+    token = os.environ.get("GOLD_TELEGRAM_BOT_TOKEN", "")
+    chat_id = os.environ.get("GOLD_TELEGRAM_CHAT_ID") or str(cfg.get("telegram_chat_id", ""))
+    return token, chat_id
+
+
+def send_telegram(text, token, chat_id):
     lines = text.split("\n")
     first, rest = html.escape(lines[0]), html.escape("\n".join(lines[1:]))
     rest = re.sub(r"^(Verdict: .*)$", r"<b>\1</b>", rest, count=1, flags=re.M)
     body = f"<b>{first}</b>\n{rest}"
     while body:  # Telegram's limit is 4096 characters per message
         cut = len(body) if len(body) <= 4000 else body.rfind("\n", 0, 4000)
-        send(body[:cut])
+        data = urllib.parse.urlencode({"chat_id": chat_id, "text": body[:cut], "parse_mode": "HTML",
+                                       "disable_web_page_preview": "true"}).encode()
+        req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data,
+                                     headers={"User-Agent": USER_AGENT})
+        urllib.request.urlopen(req, timeout=20).read()
         body = body[cut:].lstrip("\n")
 
 
@@ -597,17 +607,23 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true", help="print the report, don't send it")
     ap.add_argument("--no-ai", action="store_true", help="use the keyword news model even if a Claude key is set")
+    ap.add_argument("--test-alert", action="store_true", help="send one test message to the gold Telegram bot")
     args = ap.parse_args()
 
     cfg = json.loads(CONFIG_PATH.read_text())
+    token, chat_id = telegram_settings(cfg)
+    if not args.dry_run and not (token and chat_id):
+        log("GOLD_TELEGRAM_BOT_TOKEN or the chat id isn't set; use --dry-run or set them.")
+        return 1
+    if args.test_alert:
+        send_telegram("✅ Gold outlook bot is connected.", token, chat_id)
+        log("Test message sent.")
+        return 0
     report = build_report(cfg, use_ai=not args.no_ai)
     REPORT_PATH.write_text(report + "\n")
     print(report)
     if not args.dry_run:
-        if not os.environ.get("TELEGRAM_BOT_TOKEN"):
-            log("TELEGRAM_BOT_TOKEN not set; use --dry-run or set it.")
-            return 1
-        send_telegram(report)
+        send_telegram(report, token, chat_id)
         log("Sent to Telegram.")
     return 0
 

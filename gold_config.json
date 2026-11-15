@@ -1,5 +1,6 @@
 {
   "_comment": "Settings for gold_outlook.py. Weights must add up to 1. Feeds can be added or removed freely.",
+  "telegram_chat_id": "5018164644",
   "weights": {"technical": 0.35, "macro": 0.35, "news": 0.30},
   "consolidation_threshold": 15,
   "markets": {
