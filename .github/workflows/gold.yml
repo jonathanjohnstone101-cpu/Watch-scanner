@@ -1,0 +1,28 @@
+name: Gold outlook
+
+on:
+  schedule:
+    - cron: "23 17 * * 0"   # Sundays 17:23 UTC (5:23pm UK), before Asian markets open
+  workflow_dispatch:        # "Run workflow" button on the Actions tab
+
+jobs:
+  outlook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Only used when the ANTHROPIC_API_KEY secret is set; harmless otherwise.
+      - run: pip install anthropic
+
+      - name: Build and send the outlook
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python3 gold_outlook.py
+          { echo '```'; cat gold_report.md; echo '```'; } >> "$GITHUB_STEP_SUMMARY"

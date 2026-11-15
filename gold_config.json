@@ -1,0 +1,43 @@
+{
+  "_comment": "Settings for gold_outlook.py. Weights must add up to 1. Feeds can be added or removed freely.",
+  "weights": {"technical": 0.35, "macro": 0.35, "news": 0.30},
+  "consolidation_threshold": 15,
+  "markets": {
+    "gold": "GC=F",
+    "silver": "SI=F",
+    "dollar_index": "DX-Y.NYB",
+    "us10y_yield": "^TNX",
+    "vix": "^VIX",
+    "sp500": "^GSPC",
+    "oil": "CL=F"
+  },
+  "google_news_queries": [
+    "gold price",
+    "Federal Reserve interest rates",
+    "US inflation CPI",
+    "US dollar outlook",
+    "US jobs report",
+    "central bank gold buying",
+    "geopolitical tensions war",
+    "tariffs trade war",
+    "recession fears",
+    "China economy",
+    "ECB interest rates",
+    "Middle East conflict",
+    "Russia Ukraine"
+  ],
+  "rss_feeds": [
+    "https://feeds.bbci.co.uk/news/world/rss.xml",
+    "https://feeds.bbci.co.uk/news/business/rss.xml",
+    "https://www.theguardian.com/world/rss",
+    "https://www.theguardian.com/business/economics/rss",
+    "https://www.aljazeera.com/xml/rss/all.xml",
+    "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+    "https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml",
+    "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+    "https://www.cnbc.com/id/20910258/device/rss/rss.html",
+    "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+    "https://www.fxstreet.com/rss/news",
+    "https://www.investing.com/rss/news_11.rss"
+  ]
+}
