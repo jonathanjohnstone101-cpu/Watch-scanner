@@ -80,6 +80,30 @@ PARTS_PATTERNS = [
 LADIES_PATTERNS = [r"\blady'?s\b", r"\bladies'? (?:\w+ ){0,3}(?:watch|wristwatch)\b",
                    r"\bwomen'?s (?:\w+ ){0,3}(?:watch|wristwatch)\b", r"\bwomens (?:\w+ ){0,3}(?:watch|wristwatch)\b"]
 PLATED_PATTERNS = [r"\bgold[- ]plated\b", r"\bplated case\b", r"\bgold[- ]filled\b", r"\brolled gold\b"]
+# Modified, frankened or fake watches. Checked for every watch, since they're never wanted.
+_PART = r"(?:dial|hands|bezel|bezel insert|movement|crown|crystal|case|chapter ring|parts?)"
+_KEY_PART = r"(?:dial|hands|bezel|bezel insert|movement|case|chapter ring)"  # crystal/crown swaps are normal servicing
+MOD_PATTERNS = [
+    r"(?<!british )\bmods?\b(?! issue)", r"\bmodded\b", r"\bmodified\b", r"\bmodification\b",
+    r"\bcustom(?:ised|ized)? (?:\w+ ){0,2}(?:build|built|watch|piece|dial|mod)\b",
+    r"\b(?:home|self|custom|own)[- ]?(?:build|built)\b",
+    r"\bfrank[ae]n(?:watch|stein)?\b",
+    rf"\b(?:aftermarket|after[- ]market|non[- ]original|non[- ]genuine|upgraded) (?:\w+ ){{0,2}}{_PART}\b",
+    rf"\b(?:replacement|replaced|swapped) (?:\w+ ){{0,2}}{_KEY_PART}\b",
+    rf"\b{_KEY_PART} (?:has been |have been |was |were )?(?:replaced|swapped|upgraded)\b",
+    r"\bredial(?:led)?\b", r"\brefinished dial\b", r"\brepainted dial\b",
+    r"\breplicas?\b", r"\bhomages?\b", r"\bnot (?:genuine|authentic)\b",  # not "not original": often refers to the box or strap
+]
+# Words just before a match that cancel it ("not modified", "no mods", "we never sell replicas").
+_NEGATION = re.compile(r"(?:\b(?:not|no|never|nor|without|zero|free of|rather than)\b|n't\b)(?:\W+\w+){0,4}\W*$")
+
+
+def _find_unnegated(patterns, text):
+    for pat in patterns:
+        for m in re.finditer(pat, text):
+            if not _NEGATION.search(text[max(0, m.start() - 40):m.start()]):
+                return m.group(0)
+    return None
 
 
 def details_problem(watch, details, global_exclude):
@@ -91,6 +115,11 @@ def details_problem(watch, details, global_exclude):
         m = re.search(pat, desc)
         if m:
             return f"description says '{m.group(0)}'"
+    if aspects.get("Modified Item", "").strip().lower() == "yes":
+        return "listed as Modified Item: Yes"
+    hit = _find_unnegated(MOD_PATTERNS, desc)
+    if hit:
+        return f"description says '{hit}'"
     if "ladies" in banned or "lady" in banned:
         dept = aspects.get("Department", "").lower()
         if "women" in dept and "men" not in dept.replace("women", ""):

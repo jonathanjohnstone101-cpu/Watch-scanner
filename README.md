@@ -27,7 +27,7 @@ python3 scanner.py                # scan + alert (run hourly)
 - eBay results are Buy It Now / Best Offer only. Auction prices change, so they're excluded.
 - Vinted is off by default (`"sites": ["ebay"]` in `watches.json`) because Vinted blocks cloud servers. For Vinted, use a saved search with notifications in the Vinted app. It can be switched on (`"sites": ["ebay", "vinted"]`) when running from a home connection, but it relies on an unofficial endpoint.
 - Facebook Marketplace isn't included: it has no API and blocks bots. Use saved-search alerts in the Facebook app instead.
-- Before alerting on an eBay listing, the scanner reads its full description and item specifics. It skips parts ("dial only", "fits a … movement", "spares or repairs"), and, for watches whose exclude list has "ladies" or "plated", listings marked Department: Women or with a gold-plated case. Skipped listings are logged with the reason.
+- Before alerting on an eBay listing, the scanner reads its full description and item specifics. It skips parts ("dial only", "fits a … movement", "spares or repairs"), and, for watches whose exclude list has "ladies" or "plated", listings marked Department: Women or with a gold-plated case. It also skips modified watches for every model: listings marked Modified Item: Yes, or whose description mentions a mod, custom build, franken, aftermarket or replaced dial/hands/bezel/movement, a redial, a replica or a homage. Negated wording such as "not modified", "no mods" or "we never sell replicas" doesn't count, and neither does "British MoD issue". Skipped listings are logged with the reason.
 - Always check authenticity (serials, movement photos, seller history) before buying.
 
 # Gold weekly outlook
